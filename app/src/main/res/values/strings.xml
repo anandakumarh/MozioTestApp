@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MozioTestApp</string>
+
+    <string name="font_family_roboto_regular">sans-serif</string>
+    <string name="font_family_roboto_light">sans-serif-light</string>
+    <string name="font_family_roboto_thin">sans-serif-thin</string>
+    <string name="font_family_roboto_medium">sans-serif-medium</string>
+    <string name="home">Home</string>
+
+    <string name="patient_detail">Patient Details</string>
+    <string name="patient_name_hint">Patient Name</string>
+    <string name="patient_age">Patient Age</string>
+    <string name="patient_gender">Patient Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+</resources>
