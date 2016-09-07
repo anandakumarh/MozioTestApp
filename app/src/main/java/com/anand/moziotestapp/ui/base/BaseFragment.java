@@ -91,4 +91,6 @@ public abstract class BaseFragment extends Fragment {
      * @return true if event is consumed. otherwise false
      */
     public abstract boolean onBackPressed();
+
+
 }

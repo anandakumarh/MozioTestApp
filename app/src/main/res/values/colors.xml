@@ -22,4 +22,5 @@
     <color name="text_white_subtitle">#EFFFFFFF</color>
     <color name="text_white_description">#DFFFFFFF</color>
     <color name="text_white_hint">#AFFFFFFF</color>
+    <color name="black">#000000</color>
 </resources>

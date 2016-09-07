@@ -1,4 +1,4 @@
-package com.anand.moziotestapp.ui.dto;
+package com.anand.moziotestapp.dto;
 
 import android.os.Parcel;
 import android.os.Parcelable;

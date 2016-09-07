@@ -1,7 +1,7 @@
 package com.anand.moziotestapp.ui.splash;
 
+import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.anand.moziotestapp.R;
@@ -9,6 +9,7 @@ import com.anand.moziotestapp.ui.base.ActivityStyle;
 import com.anand.moziotestapp.ui.base.BaseActivity;
 import com.anand.moziotestapp.ui.base.BaseActivityStyleProvider;
 import com.anand.moziotestapp.ui.base.IActivityStyleImpl;
+import com.anand.moziotestapp.ui.home.HomeActivity;
 
 public class SplashScreenActivity extends BaseActivity {
 
@@ -25,12 +26,15 @@ public class SplashScreenActivity extends BaseActivity {
             public void run() {
                 launchHomeScreen();
             }
-        }, 2000);
+        }, 1000);
 
     }
 
     private void launchHomeScreen() {
-
+        Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     @Override

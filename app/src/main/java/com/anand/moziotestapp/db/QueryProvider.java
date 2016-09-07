@@ -4,7 +4,7 @@ import android.text.TextUtils;
 
 import com.anand.moziotestapp.db.tables.DataBaseTableConstants;
 import com.anand.moziotestapp.db.tables.PatientTable;
-import com.anand.moziotestapp.ui.dto.Patient;
+import com.anand.moziotestapp.dto.Patient;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class QueryProvider implements IDataBaseOperation.DBOperationsID, DataBas
     }
 
 
-    public static InsertQuery<Patient> getInsertComplaintQuery(Patient patient) {
+    public static InsertQuery<Patient> getInsertPatientQuery(Patient patient) {
         InsertQuery<Patient> insertQuery = new InsertQuery<Patient>();
         insertQuery.setDataBaseResultNotifier(null);
         insertQuery.setOperationId(INSERT);
@@ -64,14 +64,14 @@ public class QueryProvider implements IDataBaseOperation.DBOperationsID, DataBas
         return selectQuery;
     }
 
-    public static SelectQuery getSelectpatientQuery(IDataBaseResultNotifier dbResultNotifier, String complaintNo) {
+    public static SelectQuery getSelectpatientQuery(IDataBaseResultNotifier dbResultNotifier, String patientNo) {
         SelectQuery selectQuery = new SelectQuery();
         selectQuery.setDataBaseResultNotifier(dbResultNotifier);
         selectQuery.setOperationId(SELECT);
         selectQuery.setTableId(ID_PATIENT_TABLE);
-        if (!TextUtils.isEmpty(complaintNo)) {
+        if (!TextUtils.isEmpty(patientNo)) {
             String whereClause = PatientTable.COLUMN_KEY_PATIENT_NUMBER + " = ?";
-            String[] whereArgs = {complaintNo};
+            String[] whereArgs = {patientNo};
 
             selectQuery.setWhereClause(whereClause);
             selectQuery.setWhereArgs(whereArgs);

@@ -11,7 +11,7 @@ import com.anand.moziotestapp.db.InsertListQuery;
 import com.anand.moziotestapp.db.InsertQuery;
 import com.anand.moziotestapp.db.SelectQuery;
 import com.anand.moziotestapp.db.UpdateQuery;
-import com.anand.moziotestapp.ui.dto.Patient;
+import com.anand.moziotestapp.dto.Patient;
 
 import java.text.ParseException;
 import java.util.ArrayList;
