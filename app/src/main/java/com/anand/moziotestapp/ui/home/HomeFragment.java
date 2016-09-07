@@ -5,9 +5,11 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.CardView;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -100,6 +102,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void initViews(View view) {
         mPatientNo = (EditText) view.findViewById(R.id.pat_no);
+        mPatientNo.setInputType(InputType.TYPE_TEXT_FLAG_CAP_CHARACTERS);
         mPatientNo.addTextChangedListener(new
                 InputEmptyErrorRemover(((TextInputLayout) mPatientNo.getParent())));
         mSubmit = (Button) view.findViewById(R.id.submit);
@@ -159,6 +162,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         List<Patient> patientList = data;
         if (patientList != null && patientList.size() > 0)
             setDataToUI(patientList.get(0));
+        else displayErrorMessage();
     }
 
     private void setDataToUI(Patient data) {
@@ -181,7 +185,18 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     data.getPatientGender(), data.isHasMigraines(), data.isConsumedDrug()), data.getPatientName());
             TextView previousResult = (TextView) getView().findViewById(R.id.result);
             previousResult.setText(previousTestResult);
+        } else {
+            displayErrorMessage();
         }
+    }
+
+    private void displayErrorMessage() {
+        Snackbar.make(getView().findViewById(R.id.container), "No data found",
+                Snackbar.LENGTH_LONG).setAction("Ok", new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        }).show();
     }
 
     private String getPreviousTestResult(int percentage, String patientName) {
