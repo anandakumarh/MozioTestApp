@@ -20,6 +20,9 @@ public class SplashScreenActivity extends BaseActivity {
         launchNextScreen();
     }
 
+    /**
+     * Method which introduces delay
+     */
     private void launchNextScreen() {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -30,6 +33,9 @@ public class SplashScreenActivity extends BaseActivity {
 
     }
 
+    /**
+     * Method which launches Home Screen
+     */
     private void launchHomeScreen() {
         Intent intent = new Intent(SplashScreenActivity.this, HomeActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

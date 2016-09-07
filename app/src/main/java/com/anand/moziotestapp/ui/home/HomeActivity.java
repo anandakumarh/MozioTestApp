@@ -23,6 +23,9 @@ public class HomeActivity extends BaseActivity implements HomeFragmentInteractio
         loadHomeFragment();
     }
 
+    /**
+     * Method which loads HomeFragment
+     */
     private void loadHomeFragment() {
         loadFragment(R.id.content_layout, HomeFragment.getInstance(), HomeFragment.TAG, 0, 0,
                 IFragmentTransactionType.REPLACE);

@@ -12,6 +12,12 @@ public class PreferenceUtils {
 
     private static final String PREFERENCE_NAME = "mozio";
 
+    /**
+     * Method which retrieves string from the preference.
+     * @param context
+     * @param key
+     * @return String value
+     */
     public static String getStringFromSharedPreference(Context context,
                                                        String key) {
         String value = null;
@@ -24,6 +30,12 @@ public class PreferenceUtils {
     }
 
 
+    /**
+     * Method used to save string into preference
+     * @param context
+     * @param key
+     * @param value
+     */
     public static void saveStringIntoSharedPreference(Context context,
                                                       String key, String value) {
         SharedPreferences sharedpreferences = context.getSharedPreferences(
@@ -33,6 +45,12 @@ public class PreferenceUtils {
         prefEditor.commit();
     }
 
+    /**
+     * Method which returns long value from preference
+     * @param context
+     * @param key
+     * @return
+     */
     public static long getLongFromSharedPreference(Context context,
                                                    String key) {
         long value = 0;
@@ -44,6 +62,12 @@ public class PreferenceUtils {
         return value;
     }
 
+    /**
+     * Method used to save long value into preference
+     * @param context
+     * @param key
+     * @param value
+     */
     public static void saveLongIntoSharedPreference(Context context,
                                                     String key, long value) {
         SharedPreferences sharedpreferences = context.getSharedPreferences(
@@ -54,12 +78,21 @@ public class PreferenceUtils {
     }
 
 
+    /**
+     * Method which retrieves last patient number
+     * @param context
+     * @return
+     */
     public static long getLastPatientNumber(Context context) {
         long patientNumber = getLongFromSharedPreference(context,
                 Constants.Preference.LAST_PATIENT_NUMBER);
         return patientNumber;
     }
 
+    /**
+     * Method which updates patient number
+     * @param context
+     */
     public static void updatePatientNumber(Context context) {
         SharedPreferences sharedpreferences = context.getSharedPreferences(
                 PREFERENCE_NAME, Context.MODE_PRIVATE);

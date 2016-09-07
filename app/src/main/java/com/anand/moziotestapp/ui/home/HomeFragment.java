@@ -64,6 +64,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Method which resets the action bar and set title
+     */
     private void resetActionBar() {
         ActionBar actionBar = getSupportActionBar();
         if (actionBar == null) return;
@@ -86,6 +89,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         setListeners();
     }
 
+    /**
+     * Method uses to set the event listeners
+     */
     private void setListeners() {
         mSubmit.setOnClickListener(this);
         mAddNewPatient.setOnClickListener(this);
@@ -128,20 +134,31 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private void onSubmitButtonClick() {
         if (validateInputs()) {
-            final SelectQuery patientInsertQuery = QueryProvider.
-                    getSelectpatientQuery(new IDataBaseResultNotifier() {
-                        @Override
-                        public <T> void OnDataBaseDataUpdated(T data) {
-                            if (getActivity() == null || getView() == null) return;
-                            List<Patient> patientList = (List<Patient>) data;
-                            if (patientList != null && patientList.size() > 0)
-                                setDataToUI(patientList.get(0));
-                        }
-                    }, mPatientNo.getText().toString());
-            QueryExecutor selectQueryExecutor = new QueryExecutor(
-                    getActivity().getApplicationContext(), patientInsertQuery);
-            selectQueryExecutor.execute();
+            getPatientDetailFromDb();
         }
+    }
+
+    /**
+     * Method which retrieves patient details from the database
+     */
+    private void getPatientDetailFromDb() {
+        final SelectQuery patientInsertQuery = QueryProvider.
+                getSelectpatientQuery(new IDataBaseResultNotifier() {
+                    @Override
+                    public <T> void OnDataBaseDataUpdated(T data) {
+                        if (getActivity() == null || getView() == null) return;
+                        handleSuccessData((List<Patient>) data);
+                    }
+                }, mPatientNo.getText().toString());
+        QueryExecutor selectQueryExecutor = new QueryExecutor(
+                getActivity().getApplicationContext(), patientInsertQuery);
+        selectQueryExecutor.execute();
+    }
+
+    private void handleSuccessData(List<Patient> data) {
+        List<Patient> patientList = data;
+        if (patientList != null && patientList.size() > 0)
+            setDataToUI(patientList.get(0));
     }
 
     private void setDataToUI(Patient data) {
